@@ -1,41 +1,30 @@
-const listaStorage = localStorage.getItem("listaPokemons")
-let listaPokemons = [];
+const listaStorage = localStorage.getItem("listapokemons")
+let listapokemons = [];
 if (listaStorage) {
-  listaPokemons = JSON.parse(listaStorage);
+  listapokemons = JSON.parse(listaStorage);
 }
 
-function buscarPokemons() {
-  const inputPokemons = document.getElementById("input_pokemons");
-  const valorPokemons = valorPokemons.value;
-  console.log("buscando Pokemons " + valorPokemons);
-  fetch("https://pokeapi.co/" + valorPokemons)
+function buscarpokemons() {
+  console.log("Buscar pokemon")
+  const inputpokemons = document.getElementById("input_pokemons");
+  console.log(inputpokemons)
+  const valorpokemons = inputpokemons.value;
+  console.log("buscando Pokemons " + valorpokemons);
+  fetch("https://pokeapi.co/api/v2/pokemon/" + valorpokemons)
     .then((resposta) => {
       return resposta.json();
     })
     .then((json) => {
       console.log(json);
-      const inputPokemons = document.getElementById("input_pokemons");
-      inputPokemons.value = json.pokemons;
-
+      const tagAltura = document.getElementById("altura")
+      console.log(tagAltura)
+      tagAltura.innerText = 'A altura é: ' +  json.height;
     });
 }
-function clicarBuscar() {
-  console.log("Clicou para buscar");
-  const inputpokemons = document.getElementById("input_pokemons");
-  const valorpokemons = inputPokemons.value;
-
-    const novoPokemons = {
-    pokemons: valorpokemons
-    }
-
-  listapokemons.push(novopokemons);
-  console.log(listaPokemons);
-  localStorage.setItem("listaPokemons", JSON.stringify(listaPokemons))
-}
-
 function configurarEventos() {
-  const inputpokemons = document.getElementById("input_pokemons");
-  inputpokemons.addEventListener("click", buscarpokemons);
+    console.log("Configurar eventos")
+  const botaoBuscar = document.getElementById("botao_buscar");
+  botaoBuscar.addEventListener("click", buscarpokemons);
 
 }
 
