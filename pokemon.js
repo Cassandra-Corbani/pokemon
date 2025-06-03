@@ -18,7 +18,11 @@ function buscarpokemons() {
       console.log(json);
       const tagAltura = document.getElementById("altura")
       console.log(tagAltura)
-      tagAltura.innerText = 'A altura é: ' +  json.height;
+      tagAltura.innerHTML = 'A altura é: ' +  json.height;
+
+      const tagPeso = document.getElementById("peso")
+      tagPeso.innerHTML = ' O Peso é: ' + json.weight;
+
     });
 }
 function configurarEventos() {
