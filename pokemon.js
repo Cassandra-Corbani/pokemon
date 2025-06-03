@@ -23,6 +23,9 @@ function buscarpokemons() {
       const tagPeso = document.getElementById("peso")
       tagPeso.innerHTML = ' O Peso é: ' + json.weight;
 
+      const tagImagem = document.getElementById ("imagem")
+      imagem.src = json.sprites.other.dream_world.front_default;
+
     });
 }
 function configurarEventos() {
